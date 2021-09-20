@@ -75,7 +75,7 @@ do
     # pan rand
     # hpf 60 # hpq 0.2
   d5 -- bass
-    $ (|* gain 1.05)
+    $ (|* gain 1.1)
     $ slow (1.25)
     $ every' 4 3 (|> gain 1.0)
     $ (|> voice 0)
@@ -134,8 +134,9 @@ do
   d12 -- guitar backing
     $ slow 2.5
     $ cat [
-    s "A69" # n "0",
-    (0.002 ~>) $ s "A69" # n "1"
+    s "A69" # n "0"
+    ,
+    (0.005 ~>) $ s "A69" # n "1"
     ]
     # gain 1.4
-    # hpf 70 # hpq 0.6
+    # hpf 60 # hpq 0.4
