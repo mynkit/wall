@@ -132,7 +132,10 @@ do
     # gain 0
     # pan 0.7
   d12 -- guitar backing
-    $ (0.07 ~>)
-    $ s "A69/5"
-    # gain 1.2
+    $ slow 2.5
+    $ cat [
+    s "A69" # n "0",
+    s "A69" # n "1"
+    ]
+    # gain 1.4
     # hpf 70 # hpq 0.6
