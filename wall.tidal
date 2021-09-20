@@ -13,7 +13,7 @@ do
     ice = pF "ice"
     elem' xs x = elem x xs
     moogPat = "[[<a3,e4> d4 e4 <e4,af4>]*2 [<a4,e4> d4 e4 <e4,af4>]*2] [[<d4,b3> a3 b3 e4]*2 [<d4,b3> a3 b3 e4]*2]"
-    -- moogPatH = (harmonizer 9 (1)) <$> moogPat
+    -- moogPatH = (harmonizer 9 (2)) <$> moogPat
     moogPatH = moogPat
   d1
     $ (|* gain 0.95)
@@ -76,11 +76,12 @@ do
     # hpf 60 # hpq 0.2
   d5 -- bass
     $ (|* gain 1.05)
+    $ slow (1.25)
     $ every' 4 3 (|> gain 1.0)
     $ (|> voice 0)
-    $ s "~ [superhammondBend!2 ~] ~ ~"
+    $ s "~ ~ [superhammondBend!2 ~ ~] ~"
     # shape 0.4
-    # n "<e1,e3>" # sustain "0 [0.13 0.4 0 0] 0 0"
+    # n "<e1,e3>" # sustain "0 0 [0.13 0.4 0 0] 0"
     # gain 0
   d6 -- noise
     $ fast (range 5 8 rand)
@@ -106,20 +107,32 @@ do
     # pan (fast 2.5 rand)
     # gain (range 0.6 0.9 rand)
   d9 -- knock
-    $ (|* gain 1.0)
-    $ sometimesBy 0.3 ((density 1).(ply "2 4").(|* gain 0.85))
+    $ (|* gain 1.02)
+    $ sometimesBy 0.3 ((density 1).(ply "2 4").(|* gain 0.9))
     $ sometimesBy 0.25 (density 2)
     $ sometimesBy 0.6 (jux(rev))
-    $ (# n (irand 11))
+    $ (# n (irand 13))
     $ (# pan (range 0.3 0.7 rand))
-    $ (# cut 1)
     $ (# gain (wchoose [(0, 0.3), (1, 0.7)]))
+    -- $ (# gain (wchoose [(0, 0.2), (1, 0.8)]))
     $ s "[knock(3,8,2)|knock(4,7,2)|knock(3,5,2)|knock(3,4,2)]"
   d10 -- door open close
     $ (|* gain 1.2)
-    $ sometimesBy 0.4 (|> speed "-1")
-    $ sometimesBy 0.3 (jux(rev))
+    $ sometimesBy 0.3 (|> speed "-1")
+    $ sometimesBy 0.32 (jux(rev))
     $ slow 3
     $ every' 4 3 (|> gain 1.0)
     $ s "dooropen doorclose"
     # gain 0
+  d11 -- shower
+    $ (|* gain 0.77)
+    $ sometimesBy 0.3 (|> speed "-1")
+    $ every' 16 15 (|> gain 1)
+    $ degradeBy 0.1 $ s "~ shower"
+    # gain 0
+    # pan 0.7
+  d12 -- guitar backing
+    $ (0.07 ~>)
+    $ s "A69/5"
+    # gain 1.2
+    # hpf 70 # hpq 0.6
