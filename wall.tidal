@@ -5,9 +5,6 @@ all $ (|* gain 1.0)
 do
   resetCyclesTo (0-0.05)
   let
-    reverb = pF "reverb"
-    ice = pF "ice"
-    elem' xs x = elem x xs
     moogPat = "[[<a3,e4> d4 e4 <e4,af4>]*2 [<a4,e4> d4 e4 <e4,af4>]*2] [[<d4,b3> a3 b3 e4]*2 [<d4,b3> a3 b3 e4]*2]"
     -- moogPatH = (harmonizer 9 (1)) <$> moogPat
     moogPatH = moogPat
@@ -82,7 +79,7 @@ do
   d6 -- moderate　bass
     $ (|* gain 1.0)
     $ when (<5) (|> gain 0)
-    $ when (>67) (|> gain 0)
+    $ when (>68) (|> gain 0)
     $ slow 2.5
     $ cat [
     s "superhammondBend" # n "a3"

@@ -68,6 +68,11 @@ let setI = streamSetI tidal
 :}
 
 :{
+reverb = pF "reverb"
+ice = pF "ice"
+:}
+
+:{
 let resetCyclesTo n = T.changeTempo (sTempoMV tidal) (\t tempo -> tempo {T.atTime = t, T.atCycle = n})
 :}
 
