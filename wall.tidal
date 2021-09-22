@@ -7,13 +7,13 @@ setcps (120/60/4)
 all $ (|* gain 1.0)
 
 do
-  -- resetCyclesTo (0-0.05)
+  resetCyclesTo (5-0.05)
   let
     reverb = pF "reverb"
     ice = pF "ice"
     elem' xs x = elem x xs
     moogPat = "[[<a3,e4> d4 e4 <e4,af4>]*2 [<a4,e4> d4 e4 <e4,af4>]*2] [[<d4,b3> a3 b3 e4]*2 [<d4,b3> a3 b3 e4]*2]"
-    -- moogPatH = (harmonizer 9 (2)) <$> moogPat
+    -- moogPatH = (harmonizer 9 (1)) <$> moogPat
     moogPatH = moogPat
   d1
     $ (|* gain 0.95)
@@ -77,20 +77,25 @@ do
   d5 -- bass
     $ (|* gain 1.1)
     $ slow (1.25)
-    $ every' 4 3 (|> gain 1.0)
+    $ every' 4 2 (|> gain 1.0)
     $ (|> voice 0)
     $ s "~ ~ [superhammondBend!2 ~ ~] ~"
     # shape 0.4
     # n "<e1,e3>" # sustain "0 0 [0.13 0.4 0 0] 0"
     # gain 0
-  d6 -- noise
-    $ fast (range 5 8 rand)
-    $ s "SinOscSynthBend*8"
-    # n (choose [2,3,4,5])
-    # sustain (range 0.0004 0.0006 rand)
-    # pan (fast 1.5 rand)
-    # gain 1.0
-  d6 silence
+  d6 -- moderate　bass
+    $ (|* gain 1.0)
+    $ when (<5) (|> gain 0)
+    $ when (>67) (|> gain 0)
+    $ slow 2.5
+    $ cat [
+    s "superhammondBend" # n "a3"
+    ,
+    s "superhammondBend" # n "e3"
+    ]
+    # gain 0.4
+    # voice 2
+    # cut 1
   d7 -- bubble
     $ (|* gain 1.0)
     $ fast (range 4 30 rand)
@@ -132,11 +137,25 @@ do
     # gain 0
     # pan 0.7
   d12 -- guitar backing
+    $ (|* gain 1.0)
+    $ when (<8) (|> gain 0)
+    $ when (>64) (|> gain 0)
     $ slow 2.5
     $ cat [
     s "A69" # n "0"
     ,
     (0.005 ~>) $ s "A69" # n "1"
     ]
-    # gain 1.4
+    # gain 1.0
     # hpf 60 # hpq 0.4
+    # pan 0.1
+  d13
+    $ seqP [
+    (5, 6, (
+      stack [
+        s "guitar:0" # speed "-1" # pan 0.85 # gain 1.5
+        ,
+        s "guitar:0" # speed "1" # pan 0.15 # gain 1.2
+      ]
+    ))
+    ]
