@@ -1,13 +1,9 @@
-import qualified Sound.Tidal.Tempo as T
-
-resetCyclesTo n = T.changeTempo (sTempoMV tidal) (\t tempo -> tempo {T.atTime = t, T.atCycle = n})
-
 setcps (120/60/4)
 
 all $ (|* gain 1.0)
 
 do
-  resetCyclesTo (5-0.05)
+  resetCyclesTo (0-0.05)
   let
     reverb = pF "reverb"
     ice = pF "ice"
