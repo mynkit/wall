@@ -58,7 +58,7 @@ do
     # pan (range 0.3 0.7 rand)
   d4 -- footsteps
     $ (|* gain 0.8)
-    $ slow 0.75
+    $ slow 1.2
     $ stack [
       s "~ foot ~ ~",
       degradeBy 0.8 $ s "~ [~ foot] ~ ~"
