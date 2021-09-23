@@ -73,6 +73,10 @@ ice = pF "ice"
 :}
 
 :{
+let elem' xs x = elem x xs
+:}
+
+:{
 let resetCyclesTo n = T.changeTempo (sTempoMV tidal) (\t tempo -> tempo {T.atTime = t, T.atCycle = n})
 :}
 
