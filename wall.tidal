@@ -156,6 +156,15 @@ do
       $ s "bubble" # n (range 0 10 rand) # speed (range 0.7 1.2 rand)
       # pan (fast 1.5 rand)
       # gain 0.55
+    )),
+    (0, 97, (
+      when (<6) (|* gain 0)
+      $ fast (range 3 5 rand)
+      $ s "SinOscSynthBend*8"
+      # n (choose [2,3,4,5])
+      # sustain (range 0.0004 0.0006 rand)
+      # pan (fast 1.5 rand)
+      # gain 0.75
     ))
     ]
   d8 -- click
@@ -197,6 +206,7 @@ do
     )),
     (0, 94, (
       when (<=12) (# gain 0)
+      $ when (>=90) (|> speed "-1")
       $ sometimesBy 0.4 (|> speed "-1")
       $ sometimesBy 0.3 (jux(rev))
       $ slow 3
@@ -214,6 +224,7 @@ do
     $ seqP [
     (0, 98, (
       when (<10) (# gain 0)
+      $ when (>=90) (|> speed "-1")
       $ sometimesBy 0.3 (|> speed "-1")
       $ every' 16 15 (|> gain 1)
       $ degradeBy 0.1 $ s "~ shower"
@@ -222,16 +233,16 @@ do
     ))
     ]
   d6 -- moderate　bass
-    $ (|* gain 1.0)
+    $ (|* gain 0.9)
     $ seqP [
     (0, 96, (
-      when (<21) (|> gain 0)
+      when (<20) (|> gain 0)
       $ when (>87) (|> gain 0)
       $ slow 2.5
       $ cat [
-      s "superhammondBend" # n "a3"
+      s "superhammondBend" # n "<a1,a3>"
       ,
-      s "superhammondBend" # n "e3"
+      s "superhammondBend" # n "<a1,a3>"
       ]
       # gain 0.4
       # voice 2
