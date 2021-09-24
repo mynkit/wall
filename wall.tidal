@@ -168,8 +168,8 @@ do
       $ s "~ SinOscSynthBend"
       # n "<af4,af5,af6>" # hpf 700 # lpf 800
       # sustain 0.05
-      # pan (fast 2.5 rand)
-      # gain (range 0.6 0.9 rand)
+      # pan (slow 2.5 sine)
+      # gain (range 0.7 0.83 rand)
     ))
     ]
   d9 -- knock
@@ -197,8 +197,8 @@ do
     )),
     (0, 94, (
       when (<=12) (# gain 0)
-      $ sometimesBy 0.3 (|> speed "-1")
-      $ sometimesBy 0.32 (jux(rev))
+      $ sometimesBy 0.4 (|> speed "-1")
+      $ sometimesBy 0.3 (jux(rev))
       $ slow 3
       $ every' 4 3 (|> gain 1.0)
       $ s "dooropen doorclose"
@@ -259,9 +259,9 @@ do
     $ seqP [
     (21, 22, (
       stack [
-        s "guitar:0" # speed "-1" # pan 0.85 # gain 1.2
+        s "guitar:0" # speed "-1" # pan 0.85 # gain 1.18
         ,
-        s "guitar:0" # speed "1" # pan 0.15 # gain 1.2
+        s "guitar:0" # speed "1" # pan 0.15 # gain 1.19
       ]
     ))
     ]
