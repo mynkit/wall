@@ -7,7 +7,7 @@ ServerOptions.outDevices;
 
 // 出力先変更
 (
-Server.default.options.outDevice_("iRig HD 2");
+Server.default.options.outDevice_("Soundflower (2ch)");
 Server.default.reboot;
 SuperDirt.start;
 )
