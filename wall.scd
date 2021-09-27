@@ -7,7 +7,7 @@ ServerOptions.outDevices;
 
 // 出力先変更
 (
-Server.default.options.outDevice_("MacBook Proのス");
+Server.default.options.outDevice_("iRig HD 2");
 Server.default.reboot;
 SuperDirt.start;
 )
